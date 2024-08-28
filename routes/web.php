@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,10 +19,12 @@ Route::get('/', function () {
     return view('login_view');
 });
 
-Route::get('login', function () {
-    return view('login_view');
-})->name('login');
+// Route::get('home_page', function () {
+//     return view('dashboard');
+// })->name('home_page');
 
-Route::get('home_page', function () {
-    return view('dashboard');
-})->name('home_page');
+// ***************** login controller *************************
+Route::get('login',[LoginController::class, 'login'])->name('login');
+
+// ************************* dashboard controller *********************
+Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');

@@ -57,10 +57,10 @@
                 <h3 class="mb-2 text-white">Welcome back!</h3>
                 {{-- <p class="mb-4">User Experience & Interface Design <br>Strategy SaaS Solutions</p> --}}
             </div>
-            <div class="aside-image position-relative" style="background-image:url(../images/background/pic-2.png);">
-                <img class="img1 move-1" src="{{ asset('images/background/pic3.png') }}" alt="background-img">
-                <img class="img2 move-2" src="{{ asset('images/background/pic3.png') }}" alt="background-img">
-                <img class="img3 move-3" src="{{ asset('images/background/pic3.png') }}" alt="background-img">
+            <div class="aside-image position-relative" style="background-image:url(../images/background/ship.png);">
+                {{-- <img class="img1 move-1" src="{{ asset('images/background/pic3.png') }}" alt="background-img">
+                <img class="img2 move-2" src="{{ asset('images/background/pic4.png') }}" alt="background-img">
+                <img class="img3 move-3" src="{{ asset('images/background/pic5.png') }}" alt="background-img"> --}}
 
             </div>
         </div>
@@ -71,7 +71,7 @@
                     <div class="row no-gutters">
                         <div class="col-xl-12 tab-content">
                             <div id="sign-up" class="auth-form tab-pane fade show active  form-validation">
-                                <form action="{{ route('home_page') }}">
+                                <form action="{{ route('dashboard') }}">
                                     <div class="text-center mb-2">
                                         <h3 class="text-center mb-1 text-black">Sign In</h3>
                                         <span>to your account</span>
