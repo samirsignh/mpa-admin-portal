@@ -11,9 +11,7 @@
                     <span class="nav-text">User</span>
                 </a>
                 <ul aria-expanded="false" class="mm-collapse">
-                    <li><a href="teacher.php">Teacher</a></li>
-                    <li><a href="teacher-detail.php">Teacher Detail</a></li>
-                    <li><a href="add-teacher.php">Add New Teacher</a></li>
+                    <li><a href="{{ route('user_view') }}">User List</a></li>
 
                 </ul>
 

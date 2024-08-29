@@ -10,4 +10,9 @@ class LoginController extends Controller
     {
         return view('login_view');
     }
+
+    public function verify_otp()
+    {
+        return view('otp_view');
+    }
 }

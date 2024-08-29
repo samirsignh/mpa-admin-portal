@@ -4,10 +4,10 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
     }
 
-    .user-img {
+    /* .user-img {
         border: 1px solid #1400ff;
         border-radius: 10%;
-    }
+    } */
 </style>
 <div class="header">
     <div class="header-content">

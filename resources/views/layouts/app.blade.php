@@ -29,8 +29,9 @@
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
 
     <link href="{{ asset('css/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
     <link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
 </head>
@@ -166,6 +167,8 @@
     </script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
     <script src="{{ asset('js/global.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/jquery.nice-select.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/Chart.bundle.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/apexchart.js') }}" type="text/javascript"></script>

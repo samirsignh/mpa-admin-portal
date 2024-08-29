@@ -23,8 +23,9 @@
     <meta name="twitter:card" content="summary_large_image">
     <!-- FAVICONS ICON -->
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/mpa_logo.jpeg') }}">
-    {{--
-    <link rel="stylesheet" href="{{ asset('css/customeStyle.css') }}"> --}}
+
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
+
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
     <style>
@@ -44,6 +45,10 @@
         .text-primary {
             font-weight: 600;
         }
+
+        .text-white {
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
@@ -55,13 +60,8 @@
                     <img class="brand-logo" src="{{ asset('images/mpa_logo.jpeg') }}" alt="">
                 </div>
                 <h3 class="mb-2 text-white">Welcome back!</h3>
-                {{-- <p class="mb-4">User Experience & Interface Design <br>Strategy SaaS Solutions</p> --}}
             </div>
             <div class="aside-image position-relative" style="background-image:url(../images/background/ship.png);">
-                {{-- <img class="img1 move-1" src="{{ asset('images/background/pic3.png') }}" alt="background-img">
-                <img class="img2 move-2" src="{{ asset('images/background/pic4.png') }}" alt="background-img">
-                <img class="img3 move-3" src="{{ asset('images/background/pic5.png') }}" alt="background-img"> --}}
-
             </div>
         </div>
         <div
@@ -71,7 +71,7 @@
                     <div class="row no-gutters">
                         <div class="col-xl-12 tab-content">
                             <div id="sign-up" class="auth-form tab-pane fade show active  form-validation">
-                                <form action="{{ route('dashboard') }}">
+                                <form action="{{ route('verify_otp') }}">
                                     <div class="text-center mb-2">
                                         <h3 class="text-center mb-1 text-black">Sign In</h3>
                                         <span>to your account</span>
@@ -94,6 +94,24 @@
                                         <input type="password" class="form-control" id="exampleFormControlInput2"
                                             value="Password">
                                     </div>
+                                    {{-- <div class="row mb-3">
+                                        <div class="col-md-4">
+                                            <div class="captcha">
+                                                <span> Captcha </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <input type="text" name="captchaText" id="captchaText"
+                                                    class="form-control" placeholder="Enter captcha">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <a href="#">
+                                                <i class="fa-solid fa-rotate"></i>
+                                            </a>
+                                        </div>
+                                    </div> --}}
                                     <a href="javascript:void(0);" class="text-primary float-end mb-4">Forgot Password
                                         ?</a>
                                     <button class="btn btn-block btn-primary">Sign In</button>
@@ -123,7 +141,5 @@
     <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
 
 </body>
-
-<!-- Mirrored from akademi.dexignlab.com/php/demo/page-login.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 18 Jul 2024 16:35:47 GMT -->
 
 </html>
