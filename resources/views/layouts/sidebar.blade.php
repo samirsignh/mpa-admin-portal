@@ -11,7 +11,7 @@
                     <span class="nav-text">User</span>
                 </a>
                 <ul aria-expanded="false" class="mm-collapse">
-                    <li><a href="{{ route('user_view') }}">User List</a></li>
+                    <li><a href="{{ route('user.list') }}">User List</a></li>
 
                 </ul>
 

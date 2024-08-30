@@ -17,10 +17,17 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    protected $table = 'tbl_authentication_translation';
+
     protected $fillable = [
         'name',
-        'email',
+        'emailId',
+        'mobileNo',
         'password',
+        'userType',
+        'createdBy',
+        'updatedBy',
     ];
 
     /**

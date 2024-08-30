@@ -26,8 +26,13 @@
 
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('images/mpa_logo.jpeg') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <style>
+        .toast {
+            min-width: 350px;
+        }
+
         .authincation {
             background: #F8F8F8;
         }
@@ -73,7 +78,9 @@
                                         <a href="javascript:;"><img class="brand-logo"
                                                 src="{{ asset('images/mpa_logo.jpeg') }}" alt=""></a>
                                     </div>
-                                    <h4 class="text-center mb-4">Otp is sent to your registered email</h4>
+                                    <h4 class="text-center mb-4">
+                                        OTP Expire in <span id="countdown"> </span>
+                                    </h4>
                                     <form action="{{ route('dashboard') }}">
                                         <div class="mb-3">
                                             <label><strong>OTP</strong></label>
@@ -99,6 +106,54 @@
     <!-- Required vendors -->
     <script src="{{ asset('js/global.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+
+    <script>
+        var timeLeft = 5 * 60;
+
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            }
+
+            function updateTimer() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('countdown').innerHTML = "00:00";
+                } else {
+                    document.getElementById('countdown').innerHTML = formatTime(timeLeft);
+                    timeLeft--;
+                }
+            }
+
+            var timerInterval = setInterval(updateTimer, 1000);
+            updateTimer();
+    </script>
+
+    <script>
+        // Toastr configuration
+            toastr.options = {
+                "closeButton": true,             // Enable close button
+                "progressBar": true,             // Enable progress bar
+                "positionClass": "toast-top-center", // Position of the toastr
+                "showDuration": "300",           // Show animation duration
+                "hideDuration": "1000",          // Hide animation duration
+                "timeOut": "5000",               // Time to show the toastr
+                "extendedTimeOut": "1000",       // Time to keep the toastr after hover
+                "showEasing": "swing",           // Easing for show animation
+                "hideEasing": "linear",          // Easing for hide animation
+                "showMethod": "fadeIn",          // Show animation method
+                "hideMethod": "fadeOut"          // Hide animation method
+            };
+
+            @if (session('success'))
+                toastr.success("{{ session('success') }}");
+            @endif
+            @if(session('error'))
+                toastr.error("{{ session('error') }}");
+            @endif
+    </script>
 </body>
 
 <!-- Mirrored from workload.dexignlab.com/codeigniter/demo/page-lock-screen by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 06:37:51 GMT -->

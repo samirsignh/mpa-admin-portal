@@ -32,8 +32,14 @@
     <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
     <link href="{{ asset('css/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="{{ asset('css/nice-select.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
+    <style>
+        .toast {
+            min-width: 350px;
+        }
+    </style>
 </head>
 
 <body>
@@ -92,69 +98,6 @@
         Main wrapper end
     ***********************************-->
 
-    <!--***********************************-->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-center">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Recent Student title</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput1" class="form-label mb-2">Student Name</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="James">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput2" class="form-label mb-2">Email</label>
-                                <input type="email" class="form-control" id="exampleFormControlInput2"
-                                    placeholder="hello@example.com">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label mb-2">Gender</label>
-                                <select class="default-select wide" aria-label="Default select example">
-                                    <option selected>Select Option</option>
-                                    <option value="1">Male</option>
-                                    <option value="2">Women</option>
-                                    <option value="3">Other</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-xl-6">
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput4" class="form-label mb-2">Entery Year</label>
-                                <input type="number" class="form-control" id="exampleFormControlInput4"
-                                    placeholder="EX: 2023">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput5" class="form-label mb-2">Student ID</label>
-                                <input type="number" class="form-control" id="exampleFormControlInput5"
-                                    placeholder="14EMHEE092">
-                            </div>
-                            <div class="mb-3">
-                                <label for="exampleFormControlInput6" class="form-label mb-2">Phone Number</label>
-                                <input type="number" class="form-control" id="exampleFormControlInput6"
-                                    placeholder="+123456">
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
-    <!--**********************************
-		Modal
-	***********************************-->
     <!--**********************************
         Scripts
     ***********************************-->
@@ -165,7 +108,7 @@
     <script>
         var asset_url = 'assets/'
     </script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script src="{{ asset('js/global.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-select.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/jquery.nice-select.min.js') }}" type="text/javascript"></script>
@@ -183,7 +126,39 @@
     <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/dlabnav-init.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
     {{-- <script src="{{ asset('js/styleSwitcher.js') }}" type="text/javascript"></script> --}}
+    <script>
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+            "positionClass": "toast-top-right", // Center position
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+
+        @if(session('success'))
+            toastr.success("{{ session('success') }}");
+        @endif
+
+        @if(session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+
+        // Display validation errors if available
+        @if($errors->any())
+        @foreach($errors->all() as $error)
+        toastr.error("{{ $error }}");
+        @endforeach
+        @endif
+
+    </script>
 </body>
 
 <!-- Mirrored from akademi.dexignlab.com/php/demo/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 18 Jul 2024 16:35:19 GMT -->

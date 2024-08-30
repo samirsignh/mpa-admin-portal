@@ -44,7 +44,7 @@
 
                                     </div>
                                     <div class="card-footer text-center p-3">
-                                        <a href="{{ route('login') }}"
+                                        <a href="{{ route('logout') }}"
                                             class="dropdown-item ai-icon btn btn-primary light">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"
                                                 viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"

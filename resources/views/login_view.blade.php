@@ -25,10 +25,15 @@
     <link rel="shortcut icon" type="image/png" href="{{ asset('images/mpa_logo.jpeg') }}">
 
     <link rel="stylesheet" href="{{ asset('css/font-awesome.css') }}">
-
+    <link rel="stylesheet" href="{{ asset('css/toastr.min.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/style.css') }}" rel="stylesheet" type="text/css" />
     <style>
+        .toast {
+            min-width: 350px;
+            /* Set the desired width */
+        }
+
         .brand-logo {
             max-width: 85px;
             border-radius: 50%;
@@ -44,6 +49,12 @@
 
         .text-primary {
             font-weight: 600;
+        }
+
+        .btn {
+            font-size: 1.1rem;
+            padding: 7px 0px;
+            letter-spacing: 0.5px;
         }
 
         .text-white {
@@ -71,7 +82,8 @@
                     <div class="row no-gutters">
                         <div class="col-xl-12 tab-content">
                             <div id="sign-up" class="auth-form tab-pane fade show active  form-validation">
-                                <form action="{{ route('verify_otp') }}">
+                                <form action="{{ route('login') }}" method="POST">
+                                    @csrf
                                     <div class="text-center mb-2">
                                         <h3 class="text-center mb-1 text-black">Sign In</h3>
                                         <span>to your account</span>
@@ -85,36 +97,18 @@
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1"
                                             class="form-label mb-2 fs-13 label-color font-w500">Email address</label>
-                                        <input type="email" class="form-control" id="exampleFormControlInput1"
-                                            value="hello@example.com">
+                                        <input type="email" class="form-control" id="emailId" name="emailId"
+                                            placeholder="mpa@example.com" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput1"
                                             class="form-label mb-2 fs-13 label-color font-w500">Password</label>
-                                        <input type="password" class="form-control" id="exampleFormControlInput2"
-                                            value="Password">
+                                        <input type="password" class="form-control" id="password" name="password"
+                                            placeholder="**********" required>
                                     </div>
-                                    {{-- <div class="row mb-3">
-                                        <div class="col-md-4">
-                                            <div class="captcha">
-                                                <span> Captcha </span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <input type="text" name="captchaText" id="captchaText"
-                                                    class="form-control" placeholder="Enter captcha">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-1">
-                                            <a href="#">
-                                                <i class="fa-solid fa-rotate"></i>
-                                            </a>
-                                        </div>
-                                    </div> --}}
                                     <a href="javascript:void(0);" class="text-primary float-end mb-4">Forgot Password
                                         ?</a>
-                                    <button class="btn btn-block btn-primary">Sign In</button>
+                                    <button type="submit" class="btn btn-block btn-primary">Sign In</button>
 
                                 </form>
                             </div>
@@ -139,6 +133,27 @@
 
     <script src="{{ asset('js/global.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/custom.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script>
+        // Toastr configuration
+        toastr.options = {
+            "closeButton": true,             // Enable close button
+            "progressBar": true,             // Enable progress bar
+            "positionClass": "toast-top-right", // Position of the toastr
+            "showDuration": "300",           // Show animation duration
+            "hideDuration": "1000",          // Hide animation duration
+            "timeOut": "5000",               // Time to show the toastr
+            "extendedTimeOut": "1000",       // Time to keep the toastr after hover
+            "showEasing": "swing",           // Easing for show animation
+            "hideEasing": "linear",          // Easing for hide animation
+            "showMethod": "fadeIn",          // Show animation method
+            "hideMethod": "fadeOut"          // Hide animation method
+        };
+
+        @if(session('error'))
+            toastr.error("{{ session('error') }}");
+        @endif
+    </script>
 
 </body>
 

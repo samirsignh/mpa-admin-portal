@@ -41651,11 +41651,11 @@ table.dataTable thead .sorting_desc:after {
 }
 
 table.dataTable thead th {
-    color: var(--primary);
+    color: #0c0c0c;
     white-space: nowrap;
     font-size: 14px;
     text-transform: capitalize;
-    font-weight: 500;
+    font-weight: 600;
     padding: 11px 20.7px;
 }
 [data-theme-version="dark"] table.dataTable thead th {
@@ -41679,9 +41679,9 @@ td.doller {
 table.dataTable tbody td {
     border-bottom: 0;
     white-space: nowrap;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 400;
-    padding: 0.65rem 1.425rem;
+    padding: 0.65rem 1rem;
     color: #a098ae;
 }
 
