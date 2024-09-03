@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,19 +17,20 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login_view');
+    return view('user_login');
 });
 
-// ***************** login controller *************************
-Route::post('login',[LoginController::class,'login'])->name('login');
-Route::get('verify_otp',[LoginController::class,'verify_otp'])->name('verify_otp');
+// ****************** login controller ********************
+Route::post('user/login', [LoginController::class, 'login'])->name('login');
+Route::get('user/verify_otp', [LoginController::class, 'otpVerify'])->name('otpVerify')->middleware('user.auth');
+Route::post('otp/validate', [LoginController::class, 'validateUserOtp'])->name('validateUserOtp');
+Route::post('user/resend-otp',[LoginController::class, 'resendOtp'])->name('resendOtp');
+Route::get('user/forget_password',[LoginController::class,'forgetPassword'])->name('forgetPassword');
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
-//*********************** user controller *****************/
-Route::prefix('user/')->group(function () {
-    Route::get('list', [UserController::class, 'user_list'])->name('user.list');
-    Route::post('create', [UserController::class, 'create_user'])->name('user.create');
-});
 
-// ************************* dashboard controller *********************
-Route::get('dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
+// ************* dashboard controller ******************
+Route::get('admin/dashboard',[AdminDashboard::class, 'dashboard'])->name('dashboard')->middleware('user.auth');
+
+// *************** user crud section ************
+Route::get('user/list',[UserController::class, 'userList'])->name('userList')->middleware('user.auth');

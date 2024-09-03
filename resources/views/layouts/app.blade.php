@@ -7,7 +7,7 @@
 
 <head>
     <!-- PAGE TITLE HERE -->
-    <title>Dashboard :: Mormugao Port Authority, Goa</title>
+    <title>Mormugao Port Authority, Goa</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
@@ -23,7 +23,7 @@
     <meta name="twitter:image" content="../social-image.png">
     <meta name="twitter:card" content="summary_large_image">
     <!-- FAVICONS ICON -->
-    <link rel="shortcut icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="{{ asset('images/mpa_logo.jpeg') }}">
 
     <link href="{{ asset('css/animate.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
@@ -38,6 +38,14 @@
     <style>
         .toast {
             min-width: 350px;
+        }
+
+        .dlabnav {
+            background-image: linear-gradient(45deg, #0d093a, transparent);
+        }
+
+        .footer {
+            width: 100% !important;
         }
     </style>
 </head>

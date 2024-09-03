@@ -1,7 +1,7 @@
 <div class="dlabnav">
     <div class="dlabnav-scroll">
         <ul class="metismenu" id="menu">
-            <li><a href="javascript:void(0);" aria-expanded="false">
+            <li><a href="{{ route('dashboard') }}" aria-expanded="false">
                     <i class="material-symbols-outlined">home</i>
                     <span class="nav-text">Dashboard</span>
                 </a>
@@ -11,10 +11,22 @@
                     <span class="nav-text">User</span>
                 </a>
                 <ul aria-expanded="false" class="mm-collapse">
-                    <li><a href="{{ route('user.list') }}">User List</a></li>
+                    <li><a href="{{ route('userList') }}">User List</a></li>
 
                 </ul>
 
+            </li>
+            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                    <i class="material-icons">folder</i>
+                    <span class="nav-text">Tender</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="file-manager.php">File Manager</a></li>
+                    <li><a href="user.php">User</a></li>
+                    <li><a href="celandar.php">Calendar</a></li>
+                    <li><a href="chat.php">Chat</a></li>
+                    <li><a href="activity.php">Activity</a></li>
+                </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <i class="material-symbols-outlined">school</i>
@@ -40,18 +52,7 @@
                 </ul>
 
             </li>
-            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
-                    <i class="material-icons">folder</i>
-                    <span class="nav-text">Tender</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="file-manager.php">File Manager</a></li>
-                    <li><a href="user.php">User</a></li>
-                    <li><a href="celandar.php">Calendar</a></li>
-                    <li><a href="chat.php">Chat</a></li>
-                    <li><a href="activity.php">Activity</a></li>
-                </ul>
-            </li>
+
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <i class="material-icons"> app_registration </i>
                     <span class="nav-text">Penision</span>
