@@ -12,14 +12,13 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+    protected $table = 'tbl_authentication';
+
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
-
-    protected $table = 'tbl_authentication_translation';
-
     protected $fillable = [
         'name',
         'emailId',
@@ -28,6 +27,9 @@ class User extends Authenticatable
         'userType',
         'createdBy',
         'updatedBy',
+        'otp',
+        'otp_expiry',
+        'is_otp_verified',
     ];
 
     /**

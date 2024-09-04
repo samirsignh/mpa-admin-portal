@@ -37,8 +37,13 @@
                                                 <img src="{{ asset('images/user.jpg') }}" class="ms-0" alt="">
                                             </li>
                                             <li class="ms-2">
-                                                <h4 class="mb-0">Iotas</h4>
-                                                <span>Admin</span>
+                                                @if (Auth::user()->userType == 1)
+                                                <h4 class="mb-0">Super Admin</h4>
+                                                @elseif (Auth::user()->userType == 2)
+                                                <h4 class="mb-0">MPA Admin</h4>
+                                                @elseif (Auth::user()->userType == 3)
+                                                <h4 class="mb-0">Normal User</h4>
+                                                @endif
                                             </li>
                                         </ul>
 
