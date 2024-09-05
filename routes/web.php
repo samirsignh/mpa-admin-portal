@@ -7,6 +7,7 @@ use App\Http\Controllers\masters\SarodController;
 use App\Http\Controllers\masters\UserTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticeAndCircularController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,24 @@ Route::middleware('user.auth')->group(function () {
 });
 
 // ******************** master scetion area role ******************
+
+// ************* dashboard controller ******************
+Route::get('admin/dashboard',[AdminDashboard::class, 'dashboard'])->name('dashboard')->middleware('user.auth');
+
+// ************************* notice controller *********************
+Route::get('notice_circular',[NoticeAndCircularController::class,'create'])->name('notice_circular');
+Route::resource('notices', NoticeAndCircularController::class);
+
+// Route::resource('notices', NoticeAndCircularController::class);
+
+Route::get('language/{locale}', function ($locale) {
+    if (in_array($locale, ['en', 'hi'])) {
+        session(['locale' => $locale]);
+    }
+    return redirect()->back();
+})->name('language.switch');
+
+// ******************** master scetion area ******************
 Route::middleware('user.auth')->group(function(){
     Route::prefix('master/')->group(function () {
         Route::get('role_list', [UserTypeController::class, 'roleList'])->name('roleList');
@@ -74,6 +93,3 @@ Route::middleware('user.auth')->group(function() {
         Route::get('delete_arbitration/{id}',[ArbitrationController::class, 'deleteArbitration'])->name('deleteArbitration');
     });
 });
-
-// ************* dashboard controller ******************
-Route::get('admin/dashboard',[AdminDashboard::class, 'dashboard'])->name('dashboard')->middleware('user.auth');

@@ -15,6 +15,9 @@
         letter-spacing: 1px;
         text-transform: uppercase;
     }
+    .header .header-content{
+        padding-right: 0px !important;
+    }
 </style>
 <div class="nav-header">
     <a href="#" class="brand-logo">

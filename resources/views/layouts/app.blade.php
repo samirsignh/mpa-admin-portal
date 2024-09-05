@@ -39,6 +39,7 @@
         .toast {
             min-width: 350px;
         }
+<<<<<<< Updated upstream
 
         .dlabnav {
             background-image: linear-gradient(45deg, #0d093a, transparent);
@@ -47,7 +48,14 @@
         .footer {
             width: 100% !important;
         }
+        
+=======
+>>>>>>> Stashed changes
+        .wallet-open.active .content-body{
+            padding-right: 0 !important;
+        }
     </style>
+
 </head>
 
 <body>
@@ -135,6 +143,10 @@
     <script src="{{ asset('js/dlabnav-init.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     {{-- <script src="{{ asset('js/styleSwitcher.js') }}" type="text/javascript"></script> --}}
     <script>
         toastr.options = {
@@ -165,7 +177,6 @@
         toastr.error("{{ $error }}");
         @endforeach
         @endif
-
     </script>
 </body>
 
