@@ -6,6 +6,14 @@
                     <span class="nav-text">Dashboard</span>
                 </a>
             </li>
+            <li><a class="has-arrow " href="javascript:void()" aria-expanded="false">
+                    <i class="material-icons"> extension </i>
+                    <span class="nav-text">Masters</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('roleList') }}">Roles</a></li>
+                </ul>
+            </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <i class="material-symbols-outlined">person</i>
                     <span class="nav-text">User</span>
