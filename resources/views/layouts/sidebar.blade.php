@@ -12,6 +12,8 @@
                 </a>
                 <ul aria-expanded="false">
                     <li><a href="{{ route('roleList') }}">Roles</a></li>
+                    <li><a href="{{ route('sarodList') }}">SAROD</a></li>
+                    <li><a href="{{ route('arbitrationList') }}">Int. Arbitration</a></li>
                 </ul>
             </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
@@ -20,7 +22,6 @@
                 </a>
                 <ul aria-expanded="false" class="mm-collapse">
                     <li><a href="{{ route('userList') }}">User List</a></li>
-
                 </ul>
 
             </li>

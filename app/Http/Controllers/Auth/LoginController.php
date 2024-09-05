@@ -91,18 +91,17 @@ class LoginController extends Controller
                 $user->update();
                 Auth::login($user);
                 $request->session()->regenerate();
-
-
-                $userType = $request->session()->get('userType');
-                if ($userType == 1) {
-                    return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
-                } elseif ($userType == 2) {
-                    return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
-                } elseif ($userType == 3) {
-                    return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
-                } else {
-                    return redirect()->route('login')->with('error', 'You are not authorized user!');
-                }
+                return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                // $userType = $request->session()->get('userType');
+                // if ($userType == 1) {
+                //     return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                // } elseif ($userType == 2) {
+                //     return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                // } elseif ($userType == 3) {
+                //     return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                // } else {
+                //     return redirect()->route('login')->with('error', 'You are not authorized user!');
+                // }
             }else{
                 return redirect()->route('otpVerify')->with('error', 'OTP Expired. Please enter valid otp');
             }
