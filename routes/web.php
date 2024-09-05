@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticeAndCircularController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::get('admin/dashboard',[AdminDashboard::class, 'dashboard'])->name('dashbo
 
 // *************** user crud section ************
 Route::get('user/list',[UserController::class, 'userList'])->name('userList')->middleware('user.auth');
+Route::prefix('notice/')->group(function () {
+    Route::get('list', [NoticeAndCircularController::class, 'notice_list'])->name('notice_list');
+    Route::post('create', [NoticeAndCircularController::class, 'create_notice'])->name('create_notice')->middleware('user.auth');
+});

@@ -49,7 +49,12 @@
         .footer {
             width: 100% !important;
         }
+        
+        .wallet-open.active .content-body{
+            padding-right: 0 !important;
+        }
     </style>
+
 </head>
 
 <body>

@@ -17,6 +17,16 @@
 
             </li>
             <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
+                    <i class="material-icons"> widgets </i>
+                    <span class="nav-text">Information Display</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="{{ route('notice_list') }}">Notice List</a></li>
+                    <li><a href="widget-card.php">Card</a></li>
+                    <li><a href="widget-list.php">List</a></li>
+                </ul>
+            </li>
+            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
                     <i class="material-icons">folder</i>
                     <span class="nav-text">Tender</span>
                 </a>
@@ -134,16 +144,7 @@
                     <li><a href="uc-lightgallery.php">Light Gallery</a></li>
                 </ul>
             </li>
-            <li><a class="has-arrow " href="javascript:void(0);" aria-expanded="false">
-                    <i class="material-icons"> widgets </i>
-                    <span class="nav-text">Information Display</span>
-                </a>
-                <ul aria-expanded="false">
-                    <li><a href="widget-chart.php">Chart</a></li>
-                    <li><a href="widget-card.php">Card</a></li>
-                    <li><a href="widget-list.php">List</a></li>
-                </ul>
-            </li>
+           
         </ul>
     </div>
 </div>
