@@ -4,10 +4,11 @@
         box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 5px;
     }
 
-    /* .user-img {
-        border: 1px solid #1400ff;
-        border-radius: 10%;
-    } */
+    .dropdown-menu.show {
+        border-top: 2px solid #17a8e3;
+        border-top-right-radius: 5px;
+        border-top-left-radius: 5px;
+    }
 </style>
 <div class="header">
     <div class="header-content">
@@ -80,4 +81,9 @@
             </div>
         </nav>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+
+</div>
+>>>>>>> baf6df8d2a18c3d611ca48005d8233753d8d12b3

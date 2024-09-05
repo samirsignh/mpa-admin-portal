@@ -64,6 +64,29 @@
     button span i {
         color: #ff5314 !important;
     }
+
+    #user_add_btn:hover,
+    #user_add_btn_2:hover {
+        background-color: #4840aceb;
+        border: 1px solid #4840aceb;
+        transition: 0.5s ease-in-out;
+    }
+
+    .btn .dropdown-toggle {
+        height: 45px;
+        justify-content: center;
+        display: flex;
+        text-align: center;
+    }
+
+    .filter-option-inner-inner {
+        margin: 6px;
+    }
+
+    .form-btns {
+        font-size: 15px !important;
+        padding: 8px 20px !important;
+    }
 </style>
 @section('content')
 <div class="content-body">
@@ -74,7 +97,8 @@
                     <div id="user_list_div">
                         <div class="card-header">
                             <h4 class="card-title">User List</h4>
-                            <button type="button" onclick="toglleUserDiv('add')" class="btn btn-rounded btn-secondary">
+                            <button type="button" id="user_add_btn" onclick="toggleUserDiv('add')"
+                                class="btn btn-rounded btn-secondary">
                                 <span class="btn-icon-start text-info"><i class="fa fa-plus color-info"></i>
                                 </span>
                                 <span class="btn-name">Add</span>
@@ -95,19 +119,33 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if (count($users) > 0)
+                                        @foreach ($users as $key => $user)
                                         <tr>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
-                                            <td>1</td>
+                                            <td>{{ $key + 1 }}</td>
+                                            <td>{{ $user->name }}</td>
+                                            <td>{{ $user->emailId }}</td>
+                                            <td>{{ $user->mobileNo }}</td>
                                             <td>
-                                                <a class="edit-icon" href="#"><i
+                                                @if($user->userType == 2)
+                                                MPA Admin
+                                                @elseif($user->userType == 3)
+                                                Normal User
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a class="edit-icon" href="{{ route('editUser', $user->id) }}"><i
                                                         class="fa-solid fa-pen-to-square"></i></a>
-                                                <a class="delete-icon" href="#"><i
+                                                <a class="delete-icon" href="{{ route('deleteUser', $user->id) }}"><i
                                                         class="fa-solid fa-trash-can"></i></a>
                                             </td>
                                         </tr>
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="6"> <span class="text-center"> No record found!</span></td>
+                                        </tr>
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>
@@ -116,37 +154,41 @@
                     <div id="user_add_div" style="display: none;">
                         <div class="card-header">
                             <h4 class="card-title">Add User Details</h4>
-                            <button type="button" onclick="toglleUserDiv('list')" class="btn btn-rounded btn-secondary">
+                            <button type="button" id="user_add_btn_2" onclick="toggleUserDiv('list')"
+                                class="btn btn-rounded btn-secondary">
                                 <span class="btn-icon-start text-info"><i class="fa-solid fa-list"></i>
                                 </span>
-                                <span class="btn-name">Lsit</span>
+                                <span class="btn-name">List</span>
                             </button>
                         </div>
                         <div class="card-body">
                             <div class="card-content">
-                                <form action="#">
+                                <form action="{{ route('createUser') }}" method="POST">
+                                    @csrf
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col-md-6 ">
                                                 <div class="form-group">
-                                                    <label for="name"><strong>Full Name</strong></label>
+                                                    <label class="form-label"><strong>Full Name</strong></label>
                                                     <input type="text" name="name" id="name" class="form-control"
                                                         placeholder="Enter user name" required>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 mt-2">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="name"><strong>User Type</strong></label>
-                                                    <select name="userType" id="userType" class="form-control" required>
+                                                    <label class="form-label"><strong>User Type</strong></label>
+                                                    <select class="form-control wide" name="userType" id="userType"
+                                                        required>
                                                         <option value="">--select--</option>
-                                                        <option value="2">MPA Admin</option>
-                                                        <option value="3">Normal User</option>
+                                                        @foreach ($roles as $role)
+                                                        <option value="{{ $role->id }}">{{ $role->role }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mt-2">
                                                 <div class="form-group">
-                                                    <label for="name"><strong>Mobile Number</strong></label>
+                                                    <label class="form-label"><strong>Mobile Number</strong></label>
                                                     <input type="text" name="mobileNo" id="mobileNo"
                                                         class="form-control" placeholder="Enter conatct number"
                                                         required>
@@ -154,17 +196,23 @@
                                             </div>
                                             <div class="col-md-6 mt-2">
                                                 <div class="form-group">
-                                                    <label for="name"><strong>Email</strong></label>
+                                                    <label class="form-label"><strong>Email</strong></label>
                                                     <input type="email" name="emailId" id="emailId" class="form-control"
                                                         placeholder="Enter email id" required>
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mt-2">
                                                 <div class="form-group">
-                                                    <label for="name"><strong>Password</strong></label>
+                                                    <label class="form-label"><strong>Password</strong></label>
                                                     <input type="text" name="password" id="password"
                                                         class="form-control" placeholder="**********" required>
                                                 </div>
+                                            </div>
+                                            <div class="btn-area text-center mt-5">
+                                                <button type="reset"
+                                                    class="btn btn-rounded btn-outline-danger form-btns">Clear</button>
+                                                <button type="submit"
+                                                    class="btn btn-rounded btn-success form-btns">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -180,7 +228,7 @@
 @endsection
 
 <script>
-    const toglleUserDiv = (divName) =>{
+    const toggleUserDiv = (divName) =>{
         if(divName == "add"){
             $("#user_add_div").show();
             $("#user_list_div").hide();

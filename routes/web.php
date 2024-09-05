@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminDashboard;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\masters\UserTypeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoticeAndCircularController;
@@ -32,6 +33,7 @@ Route::post('user/resend-otp',[LoginController::class, 'resendOtp'])->name('rese
 Route::get('user/forget_password',[LoginController::class,'forgetPassword'])->name('forgetPassword');
 Route::get('logout',[LoginController::class,'logout'])->name('logout');
 
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 // ************* dashboard controller ******************
@@ -68,3 +70,30 @@ Route::get('language/{locale}', function ($locale) {
     return redirect()->back();
 })->name('language.switch');
 >>>>>>> Stashed changes
+=======
+// ******************** master scetion area ******************
+Route::middleware('user.auth')->group(function(){
+    Route::prefix('master/')->group(function () {
+        Route::get('role_list', [UserTypeController::class, 'roleList'])->name('roleList');
+        Route::post('create_role', [UserTypeController::class, 'craeteRole'])->name('craeteRole');
+        Route::get('edit_role/{id}', [UserTypeController::class, 'editRole'])->name('editRole');
+        Route::post('update_role', [UserTypeController::class, 'updateRole'])->name('updateRole');
+        Route::get('delte_role/{id}', [UserTypeController::class, 'deleteRole'])->name('deleteRole');
+    });
+});
+
+// *************** user crud section ************
+Route::middleware('user.auth')->group(function() {
+    Route::prefix('user/')->group(function () {
+        Route::get('list', [UserController::class, 'userList'])->name('userList');
+        Route::post('create_user', [UserController::class, 'createUser'])->name('createUser');
+        Route::get('edit_user/{id}', [UserController::class, 'editUser'])->name('editUser');
+        Route::post('update_user', [UserController::class, 'updateUser'])->name('updateUser');
+        Route::get('delete_user/{id}', [UserController::class, 'deleteUser'])->name('deleteUser');
+    });
+});
+
+
+// ************* dashboard controller ******************
+Route::get('admin/dashboard',[AdminDashboard::class, 'dashboard'])->name('dashboard')->middleware('user.auth');
+>>>>>>> baf6df8d2a18c3d611ca48005d8233753d8d12b3

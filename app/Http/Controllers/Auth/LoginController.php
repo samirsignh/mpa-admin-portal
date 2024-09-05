@@ -30,7 +30,7 @@ class LoginController extends Controller
                 $userId = $user->id;
 
                 $otp = rand(100000, 999999);
-                $expiry = time() + 1 * 60;
+                $expiry = time() + 2 * 60;
 
                 User::where('id', $userId)->update([
                     'otp' => $otp,
@@ -59,11 +59,15 @@ class LoginController extends Controller
 
     public function resendOtp(Request $request)
     {
+        $request->validate([
+            'userOtp' => 'required|integer',
+        ]);
+
         $user = Auth::user();
         $userId = $user->id;
 
         $otp = rand(100000, 999999);
-        $expiry = time() + 1 * 60;
+        $expiry = time() + 2 * 60;
 
         User::where('id', $userId)->update([
             'otp' => $otp,
@@ -87,7 +91,18 @@ class LoginController extends Controller
                 $user->update();
                 Auth::login($user);
                 $request->session()->regenerate();
-                return redirect()->route('dashboard')->with('success', 'Logedin Successfully!');
+
+
+                $userType = $request->session()->get('userType');
+                if ($userType == 1) {
+                    return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                } elseif ($userType == 2) {
+                    return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                } elseif ($userType == 3) {
+                    return redirect()->route('dashboard')->with('success', 'Logged in Successfully!');
+                } else {
+                    return redirect()->route('login')->with('error', 'You are not authorized user!');
+                }
             }else{
                 return redirect()->route('otpVerify')->with('error', 'OTP Expired. Please enter valid otp');
             }

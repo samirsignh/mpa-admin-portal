@@ -34,7 +34,11 @@
         }
 
         .authincation {
-            background: #F8F8F8;
+            background-image: url('{{ asset("images/background/otp-bg.jpg") }}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* background: #F8F8F8; */
         }
 
         .auth-form {
@@ -71,6 +75,15 @@
             margin-left: 35%;
             font-size: 14px;
             padding: 6px 30px;
+            border: 0px;
+            background: transparent;
+            color: green;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+        }
+
+        .authincation-content {
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
 
         @media(max-width: 345px {
@@ -92,12 +105,7 @@
                                         <a href="javascript:;"><img class="brand-logo"
                                                 src="{{ asset('images/mpa_logo.jpeg') }}" alt=""></a>
                                     </div>
-                                    <h4 class="text-center mb-2">
-                                        <span id="otp_timer">OTP will expire in : <span id="countdown"> </span></span>
-                                        <button id="resend_btn" type="button"
-                                            class="btn btn-rounded btn-outline-success" style="display: none">Resend
-                                            OTP</button>
-                                    </h4>
+
                                     <form action="{{ route('validateUserOtp') }}" method="POST">
                                         @csrf
                                         <div class="mb-3">
@@ -109,6 +117,10 @@
                                             <button type="submit" class="btn btn-primary btn-block">Verify OTP</button>
                                         </div>
                                     </form>
+                                    <h4 class="text-center mb-2 mt-3">
+                                        <span id="otp_timer">OTP will expire in : <span id="countdown"> </span></span>
+                                        <button id="resend_btn" style="display: none">Resend OTP</button>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
@@ -128,7 +140,7 @@
     <script src="{{ asset('js/toastr.min.js') }}"></script>
 
     <script>
-        var timeLeft = 1 * 60;
+        var timeLeft = 2 * 60;
 
         function formatTime(seconds) {
             const minutes = Math.floor(seconds / 60);
@@ -140,8 +152,8 @@
             if (timeLeft <= 0) {
                 clearInterval(timerInterval);
                 document.getElementById('countdown').innerHTML = "00:00";
-                document.getElementById('otp_timer').style.display = 'none'; // Hide the timer
-                document.getElementById('resend_btn').style.display = 'block'; // Show the resend button
+                document.getElementById('otp_timer').style.display = 'none';
+                document.getElementById('resend_btn').style.display = 'block';
             } else {
                 document.getElementById('countdown').innerHTML = formatTime(timeLeft);
                 timeLeft--;
@@ -153,7 +165,7 @@
 
         document.getElementById('resend_btn').addEventListener('click', function() {
             // Reset the timer
-            timeLeft = 1 * 60;
+            timeLeft = 2 * 60;
             document.getElementById('resend_btn').style.display = 'none';
             document.getElementById('otp_timer').style.display = 'block';
             timerInterval = setInterval(updateTimer, 1000);
@@ -171,7 +183,7 @@
                 },
                 success: function(response) {
                     if (response.success) {
-                        timeLeft = 1 * 60;
+                        timeLeft = 2 * 60;
                         document.getElementById('resend_btn').style.display = 'none';
                         document.getElementById('otp_timer').style.display = 'block';
                         timerInterval = setInterval(updateTimer, 1000);
