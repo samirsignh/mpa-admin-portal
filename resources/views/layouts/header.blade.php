@@ -14,25 +14,34 @@
         <nav class="navbar navbar-expand">
             <div class="collapse navbar-collapse justify-content-between">
                 <div class="header-left">
-                    <div class="dashboard_bar">
-                        Dashboard </div>
+                    <div class="dashboard_bar">Dashboard</div>
                 </div>
                 <ul class="navbar-nav header-right">
                 <li class="nav-item">
                
                         </li>
                     <li class="nav-item">
+                        <div class="dropdown language-switcher">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="languageSwitcher" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ app()->getLocale() == 'hi' ? 'Hindi' : 'English' }}
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="languageSwitcher">
+                                <a class="dropdown-item {{ app()->getLocale() == 'en' ? 'active' : '' }}" href="{{ route('language.switch', 'en') }}">English</a>
+                                <a class="dropdown-item {{ app()->getLocale() == 'hi' ? 'active' : '' }}" href="{{ route('language.switch', 'hi') }}">Hindi</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item">
                         <div class="dropdown header-profile2">
                             <a class="nav-link ms-0" href="javascript:void(0);" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 <div class="header-info2 d-flex align-items-center">
                                     <div class="d-flex align-items-center sidebar-info">
-
                                     </div>
                                     <img class="user-img" src="{{ asset('images/user.jpg') }}" alt="">
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end pb-0" style="">
+                            <div class="dropdown-menu dropdown-menu-end pb-0">
                                 <div class="card mb-0">
                                     <div class="card-header p-3">
                                         <ul class="d-flex align-items-center">
@@ -49,7 +58,6 @@
                                                 @endif
                                             </li>
                                         </ul>
-
                                     </div>
                                     <div class="card-footer text-center p-3">
                                         <a href="{{ route('logout') }}"
@@ -63,7 +71,6 @@
                                             </svg>
                                             <span class="ms-2 text-primary">Logout </span>
                                         </a>
-
                                     </div>
                                 </div>
                             </div>
@@ -73,5 +80,4 @@
             </div>
         </nav>
     </div>
-
 </div>

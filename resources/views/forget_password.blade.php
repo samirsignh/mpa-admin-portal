@@ -121,6 +121,7 @@
     <script src="{{ asset('js/toastr.min.js') }}"></script>
 
     <script>
+<<<<<<< Updated upstream:resources/views/forget_password.blade.php
         // Toastr configuration
             toastr.options = {
                 "closeButton": true,             // Enable close button
@@ -143,6 +144,31 @@
                 toastr.error("{{ session('error') }}");
             @endif
     </script>
+=======
+        var timeLeft = 5 * 60;
+
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const remainingSeconds = seconds % 60;
+                return `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+            }
+
+            function updateTimer() {
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    document.getElementById('countdown').innerHTML = "00:00";
+                } else {
+                    document.getElementById('countdown').innerHTML = formatTime(timeLeft);
+                    timeLeft--;
+                }
+            }
+
+            var timerInterval = setInterval(updateTimer, 1000);
+            updateTimer();
+    </script>
+
+@include('sweetalert::alert')
+>>>>>>> Stashed changes:resources/views/otp_view.blade.php
 </body>
 
 <!-- Mirrored from workload.dexignlab.com/codeigniter/demo/page-lock-screen by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 06:37:51 GMT -->

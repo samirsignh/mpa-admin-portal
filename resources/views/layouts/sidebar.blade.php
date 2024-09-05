@@ -11,7 +11,12 @@
                     <span class="nav-text">User</span>
                 </a>
                 <ul aria-expanded="false" class="mm-collapse">
+<<<<<<< Updated upstream
                     <li><a href="{{ route('userList') }}">User List</a></li>
+=======
+                    <li><a href="{{ route('user.list') }}">User List</a></li>
+                   
+>>>>>>> Stashed changes
 
                 </ul>
 

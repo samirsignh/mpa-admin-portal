@@ -3,8 +3,7 @@
 
 <!-- Mirrored from akademi.dexignlab.com/php/demo/index.php by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 18 Jul 2024 16:34:38 GMT -->
 <!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 
 <head>
     <!-- PAGE TITLE HERE -->
@@ -14,7 +13,6 @@
 
     <meta name="author" content="Dexignlabs">
     <meta name="robots" content="index, follow">
-   
     <meta name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
     <meta name="og:title" content="Akademi - PHP School and Education Management Admin Dashboard Bootstrap Template">
@@ -41,6 +39,7 @@
         .toast {
             min-width: 350px;
         }
+<<<<<<< Updated upstream
 
         .dlabnav {
             background-image: linear-gradient(45deg, #0d093a, transparent);
@@ -50,6 +49,8 @@
             width: 100% !important;
         }
         
+=======
+>>>>>>> Stashed changes
         .wallet-open.active .content-body{
             padding-right: 0 !important;
         }
@@ -142,6 +143,10 @@
     <script src="{{ asset('js/dlabnav-init.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/demo.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/toastr.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+<!-- Bootstrap JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
     {{-- <script src="{{ asset('js/styleSwitcher.js') }}" type="text/javascript"></script> --}}
     <script>
         toastr.options = {
@@ -172,7 +177,6 @@
         toastr.error("{{ $error }}");
         @endforeach
         @endif
-
     </script>
 </body>
 
