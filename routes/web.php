@@ -43,23 +43,8 @@ Route::middleware('user.auth')->group(function () {
     });
 });
 
-// ******************** master scetion area role ******************
-
 // ************* dashboard controller ******************
 Route::get('admin/dashboard',[AdminDashboard::class, 'dashboard'])->name('dashboard')->middleware('user.auth');
-
-// ************************* notice controller *********************
-Route::get('notice_circular',[NoticeAndCircularController::class,'create'])->name('notice_circular');
-Route::resource('notices', NoticeAndCircularController::class);
-
-// Route::resource('notices', NoticeAndCircularController::class);
-
-Route::get('language/{locale}', function ($locale) {
-    if (in_array($locale, ['en', 'hi'])) {
-        session(['locale' => $locale]);
-    }
-    return redirect()->back();
-})->name('language.switch');
 
 // ******************** master scetion area ******************
 Route::middleware('user.auth')->group(function(){
